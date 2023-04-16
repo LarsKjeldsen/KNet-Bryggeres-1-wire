@@ -1,9 +1,9 @@
 #include "Network.h"
 #include "Reading.h"
+#include "WIFI-Secret.h"
 
-
-char ssid[] = "Kjeldsen";
-char password[] = "donnafrida";
+char ssid[] = SSID_NAME;
+char password[] = PASSWORD;
 
 IPAddress ip(192, 168, 1, 215);
 IPAddress gw(192, 168, 1, 1);
@@ -11,7 +11,7 @@ IPAddress mask(255, 255, 255, 0);
 
 WiFiClient ethClient;
 
-IPAddress MQTTServer(192, 168, 1, 4);
+IPAddress MQTTServer(192, 168, 1, 22);
 PubSubClient MQTTclient(ethClient);
 
 
