@@ -341,3 +341,4 @@ healthchecksdb
 .pio/
 .vscode/
 WIFI-Secret.h
+/old/
