@@ -22,9 +22,9 @@
 void WiFi_Setup();
 void MQTT_Setup();
 
-void SendMQTT(const char* Topic, char* payload, bool retained = true);
-void SendMQTT(const char* Topic, int32_t payload, bool retained = true);
-void SendMQTT(const char* Topic, float payload, bool retained = true);
+void SendMQTT(const char* Topic, char* payload, bool retained = false);
+void SendMQTT(const char* Topic, int32_t payload, bool retained = false);
+void SendMQTT(const char* Topic, float payload, bool retained = false);
 
 void Send_reading(class Reading *);
 
