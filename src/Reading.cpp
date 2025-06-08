@@ -38,6 +38,8 @@ Reading::Reading()
 
 	Serial.println("**************************");
 
+	char s[256];
+
 	for (int i = 0; i < ONEWIRESNUM; i++)
 	{
 		Address = "";
@@ -49,11 +51,17 @@ Reading::Reading()
 				else
 					DevName[i] += String(DevAddr[DevNum][j], HEX);
 
-			Serial.print("Address "); Serial.print(DevNum); Serial.print(" = "); Serial.println(Address.c_str());
+			sprintf(s, "Addresse %d : %s", DevNum, Address.c_str());
+			SendMQTT("KNet/Huset/Bryggers/Status", s, false);
+
+//			Serial.print("Address "); Serial.print(DevNum); Serial.print(" = "); Serial.println(Address.c_str());
 			DevNum++;
 		}
 	}
-	Serial.print("Number of devices found : "); Serial.println(DevNum);
+//	Serial.print("Number of devices found : "); Serial.println(DevNum);
+
+	sprintf(s, "Devices : %d", DevNum);
+	SendMQTT("KNet/Huset/Bryggers/Status", s, false);
 }
 
 

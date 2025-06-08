@@ -30,6 +30,9 @@ void setup() {
 	SendMQTT("KNet/Huset/Bryggers/Status", "Reboot", false);
 
 	reading = new Reading();
+
+	reading->Get_1wire();
+	Send_reading(reading);
 }
 
 

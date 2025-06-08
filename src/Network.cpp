@@ -64,7 +64,7 @@ void Send_reading(Reading* r)
 {
 	for (int i = 0; i < r->DevNum; i++)
 	{
-		float value = r->DevValue[i] / 100;
+		float value = (float)r->DevValue[i] / 100.0;
 
 		if (value == -999)
 		{
