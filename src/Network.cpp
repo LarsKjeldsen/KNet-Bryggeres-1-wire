@@ -64,9 +64,9 @@ void Send_reading(Reading* r)
 {
 	for (int i = 0; i < r->DevNum; i++)
 	{
-		float value = (float)r->DevValue[i] / 100.0;
+		float value = r->DevValue[i] / 100.0;
 
-		if (value == -999)
+		if (value == -999 || value == -10.0)
 		{
 			String s = "KNet/Bryggers/" + r->DevName[i] + "-ERROR";
 			SendMQTT(s.c_str(), value, false);
@@ -75,13 +75,13 @@ void Send_reading(Reading* r)
 		{
 //			String s = "KNet/Huset/Bryggers/" + r->DevName[i];
 //			SendMQTT(s.c_str(), value);
-			if (i == 0) SendMQTT("KNet/Huset/Bryggers/Varmt_Vand",			value);   // 28ffa82d65040003
+			if (i == 0) SendMQTT("KNet/Huset/Bryggers/Varmt_Vand",			  value); // 28ffa82d65040003
 			else if (i == 1) SendMQTT("KNet/Huset/Bryggers/Gulv_lille_retur", value); // 28ff6436650400ac 
-			else if (i == 2) SendMQTT("KNet/Huset/Bryggers/Gulv_spa_ud",	value);   // 28ff5630650400a2
-			else if (i == 3) SendMQTT("KNet/Huset/Bryggers/Fjernvarme_ind",	value);   // 28ff56316504002d 
-			else if (i == 4) SendMQTT("KNet/Huset/Bryggers/Fjernvarme_ud",	value);   // 28fffd3565040060
-			else if (i == 5) SendMQTT("KNet/Huset/Bryggers/Gulv_lille_ud",	value);   // 28fff337650400c5
-			else if (i == 6) SendMQTT("KNet/Huset/Bryggers/Gulv_spa_retur",	value);   // 28ffab2e650400c5
+			else if (i == 2) SendMQTT("KNet/Huset/Bryggers/Gulv_spa_ud",	  value); // 28ff5630650400a2
+			else if (i == 3) SendMQTT("KNet/Huset/Bryggers/Fjernvarme_ind",	  value); // 28ff56316504002d 
+			else if (i == 4) SendMQTT("KNet/Huset/Bryggers/Fjernvarme_ud",	  value); // 28fffd3565040060
+			else if (i == 5) SendMQTT("KNet/Huset/Bryggers/Gulv_lille_ud",	  value); // 28fff337650400c5
+			else if (i == 6) SendMQTT("KNet/Huset/Bryggers/Gulv_spa_retur",	  value); // 28ffab2e650400c5
 		}
 	}
 }

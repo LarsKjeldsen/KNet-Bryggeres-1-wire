@@ -19,7 +19,7 @@
 #include "Reading.h"
 
 Reading* reading;
-#define SLEEPTIME 60000
+#define SLEEPTIME 50000
 
 void setup() {
 	Serial.begin(115200);

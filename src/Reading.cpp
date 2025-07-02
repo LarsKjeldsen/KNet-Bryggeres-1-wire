@@ -27,8 +27,8 @@ Reading::Reading()
 	DevName = new String[ONEWIRESNUM];
 	DevValue = new int16_t[ONEWIRESNUM];
 	DevNum = 0;
-	int error;
-	//	unsigned long Timeout = millis() + 2000UL;
+	// int error;
+	// unsigned long Timeout = millis() + 2000UL;
 
 	pinMode(ONE_WIRE_BUS, OUTPUT);
 	sensors.begin();
@@ -77,17 +77,17 @@ void Reading::Get_1wire()
 		float temp = -999.0;
 		temp = sensors.getTempC(DevAddr[k]); // getTempCByIndex(k);
 
-		if (temp != DEVICE_DISCONNECTED_C && temp != 85.0 )  // 85 is a error or default value (very strange setup from Maxim...)
+		if (temp != DEVICE_DISCONNECTED_C && temp != 85.0)  // 85 is a error or default value (very strange setup from Maxim...)
 		{
-			Serial.print(DevName[k]); Serial.print(" = "); Serial.println(temp);
+//			Serial.print(DevName[k]); Serial.print(" = "); Serial.println(temp);
 			DevValue[k] = (int16_t)(temp * 100);
 		}
 		else
 		{
-			Serial.print(DevName[k]); Serial.println(" = ERROR");
+//			Serial.print(DevName[k]); Serial.println(" = ERROR");
 			DevValue[k] = -999;
 		}
-		delay(250);
+		delay(350);
 	}
 	Serial.println();
 }
